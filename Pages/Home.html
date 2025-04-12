@@ -42,6 +42,22 @@
       font-weight: 500;
     }
 
+    .socials a img,
+    .socials a i {
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
+      color: white;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .socials a:hover img,
+    .socials a:hover i {
+      transform: scale(1.2);
+    }
+
     .intro {
       max-width: 850px;
       margin: 4rem auto;
@@ -261,6 +277,19 @@
   <header>
     <h1>👋 Hello, I'm Zee</h1>
     <p>Freelance Developer | Let’s build what you imagine — one line of code at a time.</p>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/nanii_mou/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="30" height="30" style="vertical-align: middle;" />
+      </a>
+      <a href="https://www.facebook.com/Zyzeeee" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="30" height="30" style="vertical-align: middle;" />
+      </a>
+      <a href="https://t.me/your_telegram" target="_blank">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+    </div>
+
     <img src="../Assets/peeking.png" alt="Peeking Character" class="peeking-img" />
   </header>
 
