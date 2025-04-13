@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zee's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      padding: 5rem 1rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    }
+    header p {
+      font-size: 1.25rem;
+      color: #e0f2fe;
+      font-weight: 500;
+    }
+
+    .socials a img,
+    .socials a i {
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
+      color: white;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .socials a:hover img,
+    .socials a:hover i {
+      transform: scale(1.2);
+    }
+
+    .intro {
+      max-width: 850px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      animation: slideUp 1.5s ease-out;
+    }
+    .intro h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #60a5fa;
+    }
+    .intro p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    .projects {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.25);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      min-height: 300px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .project-card h1 {
+      color: #93c5fd;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
+    .project-card h3 {
+      color: #93c5fd;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: #e2e8f0;
+      transition: opacity 0.3s ease;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .project-card:hover .slider-container {
+      opacity: 1;
+    }
+
+    .slider-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out; 
+      width: 100%;
+    }
+
+    .slider-images img {
+      min-width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 0.75rem;
+      background-color: #0f172a;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 10px;
+    }
+    .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.6);
+      transition: background-color 0.3s ease;
+    }
+    .circle.active {
+      background-color: #3b82f6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #1e3a8a;
+      color: #cbd5e1;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .twinkling-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInRightToLeft {
+      0% { opacity: 0; transform: translateX(100%) translateY(-50%); }
+      100% { opacity: 1; transform: translateX(0) translateY(-50%); }
+    }
+
+    .peeking-img {
+      position: absolute;
+      top: 55%;
+      left: 87%;
+      transform: translateY(-50%);
+      height: 300px;
+      z-index: 2;
+      pointer-events: none;
+      animation: fadeInRightToLeft 1.5s ease-out forwards;
+    }
+
+    /* Image Modal */
+    .image-modal {
+      position: fixed;
+      display: none;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .image-modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 1rem;
+    }
+    .image-modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>👋 Hello, I'm Zee</h1>
+    <p>Freelance Developer | Let’s build what you imagine — one line of code at a time.</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/nanii_mou/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" /></a>
+      <a href="https://www.facebook.com/Zyzeeee" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" /></a>
+      <a href="https://t.me/nanimou" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+    </div>
+    <img src="../Assets/peeking.png" alt="Peeking Character" class="peeking-img" />
+  </header>
+
+  <div class="twinkling-stars"></div> 
+
+  <section class="intro">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate developer with practical skills in web, mobile, and hardware systems. As I start freelancing, I bring a solid foundation and hands-on experience to help bring your ideas to life — turning imagination into code and transforming concepts into real, working systems. Whether it's a full-stack application or a simple/intermediate UI, I enjoy crafting reliable, and user-friendly solutions.
+    </p>
+  </section>
+
+  <section class="projects">
+    <!-- RedAlert Project -->
+    <div class="project-card redalert-card">
+      <h1>" RedAlert Mobile Application " <br>(Rescuer) </h1>
+      
+      <p>Real-time fire detection system with instant alerts, integrated navigation, and rapid response capabilities.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Rescuer.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Rescuer UI.jpg" alt="RedAlert 4" />
+          <img src="../Assets/Rescuer Ui(1).jpg" alt="RedAlert 5" />
+          <img src="../Assets/Rescuer Ui(2).jpg" alt="RedAlert 6" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <div class="project-card redalert-card">
+      <h1>" RedAlert Mobile Application " <br>(Owner) </h1>
+      
+      <p>Early fire detection with real-time data and alerts, including built-in contact features.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Create acc.jpg" alt="RedAlert 1" />
+          <img src="../Assets/Owner.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Owner ui.jpg" alt="RedAlert 4" />
+          <img src="../Assets/Device data.jpg" alt="RedAlert 5" />
+          <img src="../Assets/Edit profile.jpg" alt="RedAlert 6" />
+          <img src="../Assets/contacts.jpg" alt="RedAlert 6" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <div class="project-card redalert-card">
+      <h1>" RedAlert (Fire-alarm)   "</h1>
+      
+      <p>Connected prototype hardware delivers real-time data directly to the mobile application and admin dashboard.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/prototype.jpg" alt="RedAlert 1" />
+          <img src="../Assets/prototype1.jpg" alt="RedAlert 3" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <div class="project-card redalert-card">
+      <h1>" RedAlert Mobile Application " <br>(Admin) </h1>
+      
+      <p>The hardware transmits real-time data to the admin at configurable intervals (every second, 10 minutes, and hourly), regardless of fire detection status, with the cycle resetting every 24 hours.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Admin.jpg" alt="RedAlert 1" />
+          <img src="../Assets/Account dashboard.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Acc manage ( Owner ).jpg" alt="RedAlert 4" />
+          <img src="../Assets/Acc manage ( Rescuer ).jpg" alt="RedAlert 5" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <!-- Medisina Project -->
+    <div class="project-card Medisina-card">
+      <h3>" Medisina sa balay gabay ni inay "</h3>
+      <p>Freelance UI project offering herbal remedy suggestions based on health issues.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/redirect.jpg" alt="Medisina 1" />
+          <img src="../Assets/searchtab.jpg" alt="Medisina 2" />
+          <img src="../Assets/searchresult.jpg" alt="Medisina 3" />
+          <img src="../Assets/result.jpg" alt="Medisina 4" />
+          <img src="../Assets/reminder.jpg" alt="Medisina 5" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <div class="project-card Medisina-card">
+      <h3>" Story for you "</h3>
+      <p>Personal webpage ( under development ). A website inspired by Wattpad </p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/story.jpg" alt="Medisina 1" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Additional projects will be displayed shortly.</h3>
+      <p>Gathering images in progress.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Zee — Designed with ❤️ and a touch of imagination.
+    <p>This website is still under development.</p>
+  </footer>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImage" src="" alt="Preview" />
+  </div>
+
+  <script>
+    // Slider Functionality
+    document.querySelectorAll('.project-card').forEach((card) => {
+      const prevButton = card.querySelector('.prev');
+      const nextButton = card.querySelector('.next');
+      const sliderImages = card.querySelector('.slider-images');
+      const circles = card.querySelectorAll('.circle');
+      const images = sliderImages?.querySelectorAll('img') || [];
+      const totalImages = images.length;
+      let currentIndex = 0;
+
+      if (!prevButton || !nextButton || !sliderImages) return;
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateSlider();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateSlider();
+      });
+
+      function updateSlider() {
+        sliderImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        circles.forEach((circle, index) => {
+          circle.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      updateSlider();
+    });
+
+    // Image Preview Modal
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.slider-images img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
