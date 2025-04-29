@@ -1,128 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="5; URL='Pages/Home.html'" />
-    <title>Redirecting...</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100%;
-            font-family: 'Courier New', Courier, monospace;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zee's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000;
-            color: #00ff00;
-        }
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      padding: 5rem 1rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    }
 
-        .container {
-            background-color: rgba(0, 0, 0, 0.85);
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1;
-        }
+    header p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: #e0f2fe;
+      font-weight: 500;
+    }
 
-        .logo-container {
-            background-color: #fff; 
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
-            margin-bottom: 30px;
-        }
+    .socials a img,
+    .socials a i {
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
+      color: white;
+      transition: transform 0.3s ease;
+      margin: 1rem 0.5rem 0 0.5rem;
+    }
 
-        .logo {
-            width: 200px; 
-            display: block;
-        }
+    .socials a:hover img,
+    .socials a:hover i {
+      transform: scale(1.2);
+    }
 
-        .terminal {
-            background-color: #000;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-            width: 300px;
-            text-align: left;
-        }
+    .intro {
+      max-width: 850px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      animation: slideUp 1.5s ease-out;
+    }
 
-        .line {
-            opacity: 0;
-            animation: showLine 1s forwards;
-        }
+    .intro h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      margin-bottom: 1rem;
+      color: #60a5fa;
+    }
 
-        .line:nth-child(1) { animation-delay: 0s; }
-        .line:nth-child(2) { animation-delay: 1s; }
-        .line:nth-child(3) { animation-delay: 2s; }
-        .line:nth-child(4) { animation-delay: 3s; }
+    .intro p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
 
-        @keyframes showLine {
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
+    .projects {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.25);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      min-height: 300px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .project-card h1,
+    .project-card h3 {
+      color: #93c5fd;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: #e2e8f0;
+    }
+
+    .slider-container {
+      width: 100%;
+      height: auto;
+      position: relative;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 0.75rem;
+    }
+
+    .slider-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slider-images img {
+      min-width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 0.75rem;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 10px;
+    }
+
+    .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .circle.active {
+      background-color: #3b82f6;
+    }
+
+    .peeking-img {
+      position: absolute;
+      top: 50%;
+      right: 2%;
+      transform: translateY(-50%);
+      height: 200px;
+      animation: fadeInRightToLeft 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #1e3a8a;
+      color: #cbd5e1;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRightToLeft {
+      0% { opacity: 0; transform: translateX(100%) translateY(-50%); }
+      100% { opacity: 1; transform: translateX(0) translateY(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .peeking-img {
+        display: none;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .intro p,
+      .project-card p {
+        font-size: 0.95rem;
+      }
+
+      .arrow {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 3rem 1rem;
+      }
+
+      .project-card {
+        padding: 1.5rem;
+      }
+
+      .slider-images img {
+        max-height: 200px;
+      }
+
+      .socials a img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .circle {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  </style>
 </head>
-<body>
-    <canvas id="matrixCanvas"></canvas>
 
-    <div class="container">
-        <div class="logo-container">
-            <img src="./Assets/Logo.png" alt="Logo" class="logo">
+<div class="shooting-stars"></div>
+
+<body>
+
+  <header>
+    <h1>👋 Hello, I'm Zee</h1>
+    <p>Freelance Developer | Let’s build what you imagine — one line of code at a time.</p>
+    <div class="socials">
+      <a href="https://www.facebook.com/Zyzeeee"><img src="https://img.icons8.com/ios/50/ffffff/facebook.png" alt="Facebook"/></a>
+      <a href="https://www.instagram.com/nanii_mou"><img src="https://img.icons8.com/ios/50/ffffff/instagram.png" alt="instagram"/></a>
+      <a href="https://github.com/Zyzeee"><img src="https://img.icons8.com/ios/50/ffffff/github.png" alt="GitHub"/></a>
+      <a href="https://t.me/nanimou"><img src="https://img.icons8.com/ios/50/ffffff/telegram.png" alt="Telegram"/></a>
+    </div>
+</a>
+
+      
+    </div>
+    <img src="../Assets/peeking.png" alt="Peeking Character" class="peeking-img" />
+  </header>
+
+  <div class="twinkling-stars"></div> 
+
+  <section class="intro">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate developer with practical skills in web, mobile, and hardware systems. As I start freelancing, I bring a solid foundation and hands-on experience to help bring your ideas to life — turning imagination into code and transforming concepts into real, working systems. Whether it's a full-stack application or a simple/intermediate UI, I enjoy crafting reliable, and user-friendly solutions.
+    </p>
+  </section>
+
+  <section class="projects">
+    <!-- RedAlert Project -->
+    <div class="project-card redalert-card">
+      <h1>" RedAlert Mobile Application " <br>(Rescuer) </h1>
+      
+      <p>Real-time fire detection system with instant alerts, integrated navigation, and rapid response capabilities.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Rescuer.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Rescuer UI.jpg" alt="RedAlert 4" />
+          <img src="../Assets/Rescuer Ui(1).jpg" alt="RedAlert 5" />
+          <img src="../Assets/Rescuer Ui(2).jpg" alt="RedAlert 6" />
         </div>
-        <div class="terminal">
-            <div class="line">> Initializing system...</div>
-            <div class="line">> Loading assets...</div>
-            <div class="line">> Establishing connection...</div>
-            <div class="line">> Launching interface...</div>
-        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
     </div>
 
-    <script>
-        const canvas = document.getElementById("matrixCanvas");
-        const ctx = canvas.getContext("2d");
+    <div class="project-card redalert-card">
+      <h1>" RedAlert Mobile Application " <br>(Owner) </h1>
+      
+      <p>Early fire detection with real-time data and alerts, including built-in contact features.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Create acc.jpg" alt="RedAlert 1" />
+          <img src="../Assets/Owner.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Owner ui.jpg" alt="RedAlert 4" />
+          <img src="../Assets/Device data.jpg" alt="RedAlert 5" />
+          <img src="../Assets/Edit profile.jpg" alt="RedAlert 6" />
+          <img src="../Assets/contacts.jpg" alt="RedAlert 6" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
 
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
+    <div class="project-card redalert-card">
+      <h1>" RedAlert (Fire-alarm)   "</h1>
+      
+      <p>Connected prototype hardware delivers real-time data directly to the mobile application and admin dashboard.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/prototype.jpg" alt="RedAlert 1" />
+          <img src="../Assets/prototype1.jpg" alt="RedAlert 3" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
 
-        const letters = "01";
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+    <div class="project-card redalert-card">
+      <h1>" RedAlert  (Admin)  "</h1>
+      
+      <p>The admin can see  intervals (every second, 10 minutes, and hourly), regardless of fire detection status, with the cycle resetting every 24 hours.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/Admin.jpg" alt="RedAlert 1" />
+          <img src="../Assets/Account dashboard.jpg" alt="RedAlert 3" />
+          <img src="../Assets/Acc manage ( Owner ).jpg" alt="RedAlert 4" />
+          <img src="../Assets/Acc manage ( Rescuer ).jpg" alt="RedAlert 5" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
 
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+    <!-- Medisina Project -->
+    <div class="project-card Medisina-card">
+      <h3>" Medisina sa balay gabay ni inay "</h3>
+      <p>Freelance UI project offering herbal remedy suggestions based on health issues.</p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/redirect.jpg" alt="Medisina 1" />
+          <img src="../Assets/searchtab.jpg" alt="Medisina 2" />
+          <img src="../Assets/searchresult.jpg" alt="Medisina 3" />
+          <img src="../Assets/result.jpg" alt="Medisina 4" />
+          <img src="../Assets/reminder.jpg" alt="Medisina 5" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
 
-            ctx.fillStyle = "#0f0";
-            ctx.font = fontSize + "px Courier";
+    <div class="project-card Medisina-card">
+      <h3>" Story for you "</h3>
+      <p>Personal webpage ( under development ). A website inspired by Wattpad </p>
+      <div class="slider-container">
+        <button class="arrow prev">&#10094;</button>
+        <div class="slider-images">
+          <img src="../Assets/story.jpg" alt="Medisina 1" />
+        </div>
+        <button class="arrow next">&#10095;</button>
+      </div>
+      <div class="circle-container">
+        <div class="circle"></div>
+      </div>
+    </div>
 
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    <div class="project-card">
+      <h3>Additional projects will be displayed shortly.</h3>
+      <p>Gathering images in progress.</p>
+    </div>
+  </section>
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
+  <footer>
+    &copy; 2025 Zee — Designed with ❤️ and a touch of imagination.
+    <p>This website is still under development.</p>
+  </footer>
 
-        setInterval(drawMatrix, 33);
-    </script>
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImage" src="" alt="Preview" />
+  </div>
+
+  <script>
+    // Slider Functionality
+    document.querySelectorAll('.project-card').forEach((card) => {
+      const prevButton = card.querySelector('.prev');
+      const nextButton = card.querySelector('.next');
+      const sliderImages = card.querySelector('.slider-images');
+      const circles = card.querySelectorAll('.circle');
+      const images = sliderImages?.querySelectorAll('img') || [];
+      const totalImages = images.length;
+      let currentIndex = 0;
+
+      if (!prevButton || !nextButton || !sliderImages) return;
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateSlider();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateSlider();
+      });
+
+      function updateSlider() {
+        sliderImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        circles.forEach((circle, index) => {
+          circle.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      updateSlider();
+    });
+
+    // Image Preview Modal
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.slider-images img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      }
+    });
+    
+    const shootingStarsContainer = document.querySelector('.shooting-stars');
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+
+      shootingStarsContainer.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 1000);
+    }
+
+    // Create stars at random intervals
+    setInterval(() => {
+      createShootingStar();
+    }, Math.random() * 2000 + 1000); // Every 1-3 seconds
+  </script>
+
 </body>
 </html>
