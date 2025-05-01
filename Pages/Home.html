@@ -22,14 +22,26 @@
     }
 
     header {
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      padding: 5rem 1rem;
-      text-align: center;
-      animation: fadeIn 1.5s ease-out;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
+  background: url('../Assets/me.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: #000;
+  height: 300px;
+  animation: fadeIn 1.5s ease-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Push content to bottom */
+  align-items: center;
+  padding-bottom: 2rem; /* Add some space from the bottom */
+  text-align: center;
+}
+
+
+
     header h1 {
       font-size: 3.5rem;
       margin-bottom: 1rem;
@@ -237,16 +249,6 @@
       100% { opacity: 1; transform: translateX(0) translateY(-50%); }
     }
 
-    .peeking-img {
-      position: absolute;
-      top: 55%;
-      left: 87%;
-      transform: translateY(-50%);
-      height: 300px;
-      z-index: 2;
-      pointer-events: none;
-      animation: fadeInRightToLeft 1.5s ease-out forwards;
-    }
 
     /* Image Modal */
     .image-modal {
@@ -305,6 +307,24 @@
   }
 }
 
+::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #42526E;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #233040, #42526E);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #233040, #42526E);
+        }
+
 
   </style>
 </head>
@@ -319,7 +339,7 @@
       <a href="https://github.com/Zyzeee"><img src="https://img.icons8.com/ios/50/ffffff/github.png" alt="GitHub"/></a>
       <a href="https://t.me/nanimou"><img src="https://img.icons8.com/ios/50/ffffff/telegram.png" alt="Telegram"/></a>
     </div>
-    <img src="../Assets/peeking.png" alt="Peeking Character" class="peeking-img" />
+
   </header>
 
   <div class="twinkling-stars"></div> 
