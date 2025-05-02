@@ -23,23 +23,23 @@
     }
 
     header {
-      background: url('../Assets/me.jpg') no-repeat center center;
-      background-size: cover;
-      background-color: #000;
-      height: 300px;
-      animation: fadeIn 1.5s ease-out;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end; 
-      align-items: center;
-      padding-bottom: 2rem; 
-      text-align: center;
-    }
+  background: url('../Assets/me.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: #000;
+  height: 300px;
+  animation: fadeIn 1.5s ease-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Push content to bottom */
+  align-items: center;
+  padding-bottom: 2rem; /* Add some space from the bottom */
+  text-align: center;
+}
 
 
 
@@ -263,7 +263,7 @@
     }
 
 
-
+    /* Image Modal */
     .image-modal {
       position: fixed;
       display: none;
@@ -299,28 +299,28 @@
       pointer-events: none;
     }
 
-    .shooting-star {
-      position: absolute;
-      width: 2px;
-      height: 100px;
-      background: linear-gradient(45deg, #fff, rgba(255,255,255,0));
-      opacity: 0;
-      transform: rotate(45deg);
-      animation: shoot 1s linear forwards;
-    }
-    
-    @keyframes shoot {
-      0% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(45deg);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-300px, 300px) rotate(45deg);
-      }
-    }
-    
-    ::-webkit-scrollbar {
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(45deg, #fff, rgba(255,255,255,0));
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: shoot 1s linear forwards;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-300px, 300px) rotate(45deg);
+  }
+}
+
+::-webkit-scrollbar {
             width: 10px;
         }
 
@@ -338,7 +338,7 @@
             background: linear-gradient(to bottom, #233040, #42526E);
         }
 
-  .modal {
+        .modal {
     display: none; 
     position: fixed; 
     top: 0;
@@ -396,115 +396,172 @@
     background-color: #45a049;
   }
 
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
+  /* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #233040; /* Light background color */
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  color: #495057; /* Dark color for the close button */
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #f44336;
+}
+
+/* Heading Styling */
+h2 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 8px;
+}
+
+label {
+  font-size: 12px;
+  color: #fff;
+  margin-bottom: 2px;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #495057;
+}
+
+input:focus, textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 100px; 
+  padding: 10px; 
+}
+
+
+textarea::placeholder {
+  font-size: 14px; 
+  color: #6c757d; 
+}
+
+
+.submit-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:active {
+  background-color: #004085;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+
+.feedback-box {
+  height: 140px;
+  overflow: hidden;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  margin-top: 12px;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 6s linear infinite;
+}
+
+.feedback-item {
+  padding: 6px;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 12px;
+  color: #212529;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 85%;
+    padding: 10px;
   }
 
-    .modal-content {
-      background-color: #233040; 
-      padding: 30px;
-      border-radius: 10px;
-      width: 400px;
-      max-width: 90%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: relative;
-    }
-    
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 28px;
-      color: #495057; 
-      cursor: pointer;
-    }
-    
-    .close:hover {
-      color: #f44336;
-    }
-    
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #fff;
-    }
-    
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    label {
-      font-size: 14px;
-      color: #fff; 
-      margin-bottom: 5px;
-      display: block;
-    }
-    
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ced4da; 
-      border-radius: 8px;
-      font-size: 16px;
-      color: #495057; 
-    }
-    
-    input:focus, textarea:focus {
-      border-color: #007BFF;
-      outline: none;
-    }
-    
-    textarea {
-      resize: vertical;
-    }
-    
-  
-    .submit-button {
-      background-color: #007BFF; 
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-    }
-    
-    .submit-button:hover {
-      background-color: #0056b3;
-    }
-    
-    .submit-button:active {
-      background-color: #004085;
-    }
-    
-    .submit-button:focus {
-      outline: none;
-    }
-    
-    
-    @media (max-width: 600px) {
-      .modal-content {
-        width: 90%;
-        padding: 20px;
-      }
-      
-      h2 {
-        font-size: 20px;
-      }
-    }
+  h2 {
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 6px;
+  }
+
+  .submit-button {
+    padding: 6px 10px;
+  }
+
+  input, textarea {
+    font-size: 12px;
+  }
+}
+
+
+
 
   </style>
 </head>
@@ -526,7 +583,6 @@
   <div class="shooting-stars"></div>
 
   <section class="intro">
-    <h2>About Me</h2>
     <p>
       I’m a passionate developer with practical skills in web, mobile, and hardware systems. As I start freelancing, I bring a solid foundation and hands-on experience to help bring your ideas to life — turning imagination into code and transforming concepts into real, working systems. Whether it's a full-stack application or a simple/intermediate UI, I enjoy crafting reliable, and user-friendly solutions.
     </p>
@@ -622,7 +678,6 @@
       </div>
     </div>
 
-
     <div class="project-card Medisina-card">
       <h3>" Medisina sa balay gabay ni inay "</h3>
       <p>Freelance UI project offering herbal remedy suggestions based on health issues.</p>
@@ -676,7 +731,7 @@
     </div>
   </footer>
 
- 
+
   <div class="image-modal" id="imageModal">
     <span class="close-btn" id="closeModal">&times;</span>
     <img id="modalImage" src="" alt="Preview" />
@@ -685,7 +740,7 @@
   <div id="rateModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Rate My Work</h2>
+      <h2>Feedback is appreciated!</h2>
       <form id="rateForm">
         <div class="form-group">
           <label for="rating">Rating (1-5):</label>
@@ -695,14 +750,29 @@
           <label for="feedback">Feedback:</label>
           <textarea id="feedback" name="feedback" rows="4" required placeholder="Enter your feedback here..."></textarea>
         </div>
+        <div class="form-group">
+          <label for="anonymous">
+            <input type="checkbox" id="anonymous" name="anonymous"> Rate anonymously
+          </label>
+        </div>
+
+        <div class="form-group" id="emailField" style="display:none;">
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+        </div>
         <button type="submit" class="submit-button">Submit</button>
       </form>
+      <div id="feedbackBox" class="feedback-box">
+        <div class="feedback-list" id="feedbackList"></div>
+      </div>
     </div>
   </div>
   
+  
+  
 
   <script>
-   
+
     document.querySelectorAll('.project-card').forEach((card) => {
       const prevButton = card.querySelector('.prev');
       const nextButton = card.querySelector('.next');
@@ -734,7 +804,6 @@
       updateSlider();
     });
 
-    
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModal = document.getElementById('closeModal');
@@ -787,7 +856,7 @@
       }
     });
 
- 
+
   const Closemodal = document.getElementById('rateModal');
   const rateButton = document.getElementById('rateButton');
   const closeRateModal = document.querySelector('.close');
@@ -809,13 +878,92 @@
     }
   });
 
+ 
+function loadFeedbacks() {
+  const feedbackListEl = document.getElementById('feedbackList');
+  feedbackListEl.innerHTML = ''; 
 
-  const rateForm = document.getElementById('rateForm');
-  rateForm.addEventListener('submit', (e) => {
-    e.preventDefault();  
-    alert("Thank you for your feedback!");
-    Closemodal.style.display = 'none';
+  const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
+  feedbacks.forEach(fb => {
+    const item = document.createElement('div');
+    item.className = 'feedback-item';
+    item.innerHTML = `<strong>Rating:</strong> ${fb.rating}<br><strong>Feedback:</strong> ${fb.feedback}`;
+    if (!fb.anonymous) {
+      item.innerHTML += `<br><strong>Email:</strong> ${fb.email}`; 
+    }
+    feedbackListEl.appendChild(item);
   });
+}
+
+
+function saveFeedback(rating, feedbackText, anonymous, email) {
+  const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+  feedbacks.push({
+    rating,
+    feedback: feedbackText,
+    anonymous,
+    email: anonymous ? null : email 
+  });
+
+
+  localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+}
+
+
+document.getElementById('anonymous').addEventListener('change', function() {
+  const emailField = document.getElementById('emailField');
+  if (this.checked) {
+    emailField.style.display = 'none';  
+  } else {
+    emailField.style.display = 'block';  
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadFeedbacks();
+
+ 
+  const anonymousCheckbox = document.getElementById('anonymous');
+  if (anonymousCheckbox.checked) {
+    document.getElementById('emailField').style.display = 'none';
+  } else {
+    document.getElementById('emailField').style.display = 'block';
+  }
+});
+
+
+const rateForm = document.getElementById('rateForm');
+rateForm.addEventListener('submit', (e) => {
+  e.preventDefault(); 
+
+
+  const rating = document.getElementById('rating').value;  
+  const feedbackText = document.getElementById('feedback').value;  
+  const anonymous = document.getElementById('anonymous').checked; 
+  const email = document.getElementById('email').value;
+
+  if (rating && feedbackText) {
+    if (anonymous || email) {
+      
+      saveFeedback(rating, feedbackText, anonymous, email);
+
+    
+      rateForm.reset();
+
+    
+      loadFeedbacks();
+    } else {
+      alert("Please enter your email if you're not rating anonymously!"); 
+    }
+  } else {
+    alert("Please fill in both fields!"); 
+  }
+});
+
+
+
   
   </script>
 
