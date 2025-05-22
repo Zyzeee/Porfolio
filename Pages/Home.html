@@ -35,9 +35,9 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Push content to bottom */
+  justify-content: flex-end;
   align-items: center;
-  padding-bottom: 2rem; /* Add some space from the bottom */
+  padding-bottom: 2rem;
   text-align: center;
 }
 
@@ -263,7 +263,6 @@
     }
 
 
-    /* Image Modal */
     .image-modal {
       position: fixed;
       display: none;
@@ -396,7 +395,7 @@
     background-color: #45a049;
   }
 
-  /* Modal Styling */
+
 .modal {
   display: none;
   position: fixed;
@@ -405,13 +404,13 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background-color: #233040; /* Light background color */
+  background-color: #233040;
   padding: 30px;
   border-radius: 10px;
   width: 400px;
@@ -425,7 +424,7 @@
   top: 10px;
   right: 10px;
   font-size: 28px;
-  color: #495057; /* Dark color for the close button */
+  color: #495057; 
   cursor: pointer;
 }
 
@@ -433,7 +432,7 @@
   color: #f44336;
 }
 
-/* Heading Styling */
+
 h2 {
   text-align: center;
   margin-bottom: 6px;
@@ -441,7 +440,6 @@ h2 {
   color: #fff;
 }
 
-/* Form Styling */
 .form-group {
   margin-bottom: 8px;
 }
@@ -475,7 +473,7 @@ textarea {
 
 
 textarea::placeholder {
-  font-size: 14px; 
+  font-size: 14px;
   color: #6c757d; 
 }
 
@@ -502,7 +500,6 @@ textarea::placeholder {
 .submit-button:focus {
   outline: none;
 }
-
 
 .feedback-box {
   height: 140px;
@@ -536,7 +533,6 @@ textarea::placeholder {
   }
 }
 
-
 @media (max-width: 600px) {
   .modal-content {
     width: 85%;
@@ -558,6 +554,77 @@ textarea::placeholder {
   input, textarea {
     font-size: 12px;
   }
+}
+
+#skills {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#skills p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem; 
+}
+
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: center; 
+}
+
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px; 
+}
+
+.skill img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.skill img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.skill p {
+  margin-top: 0.3rem;
+  text-align: center;
+  font-size: 0.8rem; 
+}
+
+.project-link-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: rgba(30, 41, 59, 0.85); 
+  color: #93c5fd; 
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 10px 0 15px 0;
+  transition: box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  font-size: 14px;
+  user-select: none;
+  border: none; 
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7); 
+}
+
+.project-link-btn:hover,
+.project-link-btn:focus {
+  background-color: #93c5fd;  
+  color: rgba(30, 41, 59, 0.85);
+  box-shadow: 0 6px 15px rgba(57, 123, 255, 0.7); 
+  outline: none;
 }
 
 
@@ -585,11 +652,41 @@ textarea::placeholder {
   <section class="intro">
     <p>
       I’m a passionate developer with practical skills in web, mobile, and hardware systems. As I start freelancing, I bring a solid foundation and hands-on experience to help bring your ideas to life — turning imagination into code and transforming concepts into real, working systems. Whether it's a full-stack application or a simple/intermediate UI, I enjoy crafting reliable, and user-friendly solutions.
+      <section id="skills">
+        <p> Proficient in using:</p>
+      
+        <div class="skills-row">
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+            <p>Java</p>
+          </div>
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <p>Python</p>
+          </div>
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+            <p>C++ (Arduino)</p>
+          </div>
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+            <p>HTML</p>
+          </div>
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+            <p>CSS</p>
+          </div>
+          <div class="skill">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+            <p>React</p>
+          </div>    
+        </div>
+      </section>
+      
     </p>
   </section>
 
   <section class="projects">
-
     <div class="project-card redalert-card">
       <h1>" RedAlert Mobile Application " <br>(Rescuer) </h1>
       
@@ -640,7 +737,6 @@ textarea::placeholder {
 
     <div class="project-card redalert-card">
       <h1>" RedAlert (Fire-alarm)   "</h1>
-      
       <p>Connected prototype hardware delivers real-time data directly to the mobile application and admin dashboard.</p>
       <div class="slider-container">
         <button class="arrow prev">&#10094;</button>
@@ -679,8 +775,14 @@ textarea::placeholder {
     </div>
 
     <div class="project-card Medisina-card">
-      <h3>" Medisina sa balay gabay ni inay "</h3>
+      <h3>Medisina sa Balay Gabay ni Inay</h3>
       <p>Freelance UI project offering herbal remedy suggestions based on health issues.</p>
+    
+      <a href="https://zyzeee.github.io/Medisina-sa-Balay-Gabay-ng-Inay/" 
+         target="_blank" rel="noopener noreferrer" class="project-link-btn">
+        Visit Project
+      </a>
+    
       <div class="slider-container">
         <button class="arrow prev">&#10094;</button>
         <div class="slider-images">
@@ -692,6 +794,7 @@ textarea::placeholder {
         </div>
         <button class="arrow next">&#10095;</button>
       </div>
+    
       <div class="circle-container">
         <div class="circle"></div>
         <div class="circle"></div>
@@ -700,6 +803,7 @@ textarea::placeholder {
         <div class="circle"></div>
       </div>
     </div>
+    
 
     <div class="project-card Medisina-card">
       <h3>" Story for you "</h3>
@@ -726,12 +830,11 @@ textarea::placeholder {
     <p>&copy; 2025 Zee — Designed with ❤️ and a touch of imagination.</p>
     <p>This website is still under development.</p>
     <div class="footer-links">
-      <a href="#about">About me</a>
       <a href="javascript:void(0);" id="rateButton">Rate me</a>
     </div>
   </footer>
 
-
+  
   <div class="image-modal" id="imageModal">
     <span class="close-btn" id="closeModal">&times;</span>
     <img id="modalImage" src="" alt="Preview" />
@@ -755,7 +858,7 @@ textarea::placeholder {
             <input type="checkbox" id="anonymous" name="anonymous"> Rate anonymously
           </label>
         </div>
-
+      
         <div class="form-group" id="emailField" style="display:none;">
           <label for="email">Your Email:</label>
           <input type="email" id="email" name="email" placeholder="Enter your email">
@@ -772,7 +875,7 @@ textarea::placeholder {
   
 
   <script>
-
+ 
     document.querySelectorAll('.project-card').forEach((card) => {
       const prevButton = card.querySelector('.prev');
       const nextButton = card.querySelector('.next');
@@ -804,6 +907,7 @@ textarea::placeholder {
       updateSlider();
     });
 
+
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModal = document.getElementById('closeModal');
@@ -831,11 +935,10 @@ textarea::placeholder {
       }, 1000);
     }
 
-
+    
     setInterval(() => {
       createShootingStar();
     }, Math.random() * 2000 + 1000); 
-
 
     document.querySelectorAll('.slider-images img').forEach(img => {
       img.addEventListener('click', () => {
@@ -856,29 +959,28 @@ textarea::placeholder {
       }
     });
 
-
+   
   const Closemodal = document.getElementById('rateModal');
   const rateButton = document.getElementById('rateButton');
   const closeRateModal = document.querySelector('.close');
 
-
+  
   rateButton.addEventListener('click', () => {
     Closemodal.style.display = 'flex';
   });
 
-
+ 
   closeRateModal.addEventListener('click', () => {
     Closemodal.style.display = 'none';
   });
 
- 
+
   window.addEventListener('click', (event) => {
     if (event.target === Closemodal) {
       Closemodal.style.display = 'none';
     }
   });
 
- 
 function loadFeedbacks() {
   const feedbackListEl = document.getElementById('feedbackList');
   feedbackListEl.innerHTML = ''; 
@@ -890,12 +992,11 @@ function loadFeedbacks() {
     item.className = 'feedback-item';
     item.innerHTML = `<strong>Rating:</strong> ${fb.rating}<br><strong>Feedback:</strong> ${fb.feedback}`;
     if (!fb.anonymous) {
-      item.innerHTML += `<br><strong>Email:</strong> ${fb.email}`; 
+      item.innerHTML += `<br><strong>Email:</strong> ${fb.email}`;  
     }
     feedbackListEl.appendChild(item);
   });
 }
-
 
 function saveFeedback(rating, feedbackText, anonymous, email) {
   const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
@@ -914,9 +1015,9 @@ function saveFeedback(rating, feedbackText, anonymous, email) {
 document.getElementById('anonymous').addEventListener('change', function() {
   const emailField = document.getElementById('emailField');
   if (this.checked) {
-    emailField.style.display = 'none';  
+    emailField.style.display = 'none';
   } else {
-    emailField.style.display = 'block';  
+    emailField.style.display = 'block';
   }
 });
 
@@ -924,7 +1025,7 @@ document.getElementById('anonymous').addEventListener('change', function() {
 document.addEventListener('DOMContentLoaded', function() {
   loadFeedbacks();
 
- 
+
   const anonymousCheckbox = document.getElementById('anonymous');
   if (anonymousCheckbox.checked) {
     document.getElementById('emailField').style.display = 'none';
@@ -939,20 +1040,20 @@ rateForm.addEventListener('submit', (e) => {
   e.preventDefault(); 
 
 
-  const rating = document.getElementById('rating').value;  
-  const feedbackText = document.getElementById('feedback').value;  
+  const rating = document.getElementById('rating').value; 
+  const feedbackText = document.getElementById('feedback').value;
   const anonymous = document.getElementById('anonymous').checked; 
   const email = document.getElementById('email').value;
 
   if (rating && feedbackText) {
     if (anonymous || email) {
-      
+     
       saveFeedback(rating, feedbackText, anonymous, email);
 
-    
+   
       rateForm.reset();
 
-    
+  
       loadFeedbacks();
     } else {
       alert("Please enter your email if you're not rating anonymously!"); 
